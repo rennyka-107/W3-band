@@ -1,36 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [renderMenu, setRenderMenu] = useState("none-display");
+
+  useEffect(() => {
+    const icon = document.getElementById("menu");
+    if (icon) {
+      icon.style.transform =
+        renderMenu === "display" ? "rotate(90deg)" : "rotate(0deg)";
+    }
+  }, [renderMenu]);
+
+  const onClickMenu = () => {
+    setRenderMenu(renderMenu === "display" ? "none-display" : "display");
+  };
+
+  const menu = () => (
+    <div className="menu">
+      <Link to="/">HOME</Link>
+      <button type="button" onClick={onClickMenu}>
+        <i className="fa fa-bars" id="menu" />
+      </button>
+    </div>
+  );
+
+  const dropdownMore = () => (
+    <div className={`dropdown-more ${renderMenu}`}>
+      <Link to="/">
+        MORE<i className="fa fa-caret-down"></i>
+      </Link>
+      <div className="dropdown-part">
+        <Link to="/">Merchandise</Link>
+        <Link to="/">Extras</Link>
+        <Link to="/">Media</Link>
+      </div>
+    </div>
+  );
+
+  const searchContainer = () => (
+    <div className={`search-container ${renderMenu}`}>
+      <input type="text" placeholder="Search.." name="search" />
+      <button type="submit">
+        <i className="fa fa-search" />
+      </button>
+    </div>
+  );
+
   return (
     <div className="header">
-      <div className="menu">
-        <Link to="/">HOME</Link>
-        {/* <div className="icon-menu"> */}
-        <button type="button">
-          <i className="fa fa-bars" />
-        </button>
-        {/* </div> */}
-      </div>
-      <Link to="/">BAND</Link>
-      <Link to="/">TOUR</Link>
-      <Link to="/">CONTACT</Link>
-      <div className="dropdown-more">
-        <Link to="/">
-          MORE<i class="fa fa-caret-down"></i>
-        </Link>
-        <div className="dropdown-part">
-          <Link to="/">Merchandise</Link>
-          <Link to="/">Extras</Link>
-          <Link to="/">Media</Link>
-        </div>
-      </div>
-      <div className="search-container">
-        <input type="text" placeholder="Search.." name="search" />
-        <button type="submit">
-          <i className="fa fa-search" />
-        </button>
-      </div>
+      {menu()}
+      <Link className={renderMenu} to="/band">
+        BAND
+      </Link>
+      <Link className={renderMenu} to="/tour">
+        TOUR
+      </Link>
+      <Link className={renderMenu} to="/contact">
+        CONTACT
+      </Link>
+      {dropdownMore()}
+      {searchContainer()}
     </div>
   );
 };
