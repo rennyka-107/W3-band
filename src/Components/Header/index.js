@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Input1 from "../Input1";
 
 const Header = () => {
   const [renderMenu, setRenderMenu] = useState("none-display");
@@ -40,7 +41,8 @@ const Header = () => {
 
   const searchContainer = () => (
     <div className={`search-container ${renderMenu}`}>
-      <input type="text" placeholder="Search.." name="search" />
+      {/* <input type="text" placeholder="Search.." name="search" /> */}
+      <Input1 placeholder="Search..." additionClassName="header-search-input" />
       <button type="submit">
         <i className="fa fa-search" />
       </button>
