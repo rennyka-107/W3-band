@@ -48,16 +48,23 @@ const Header = () => {
     </div>
   );
 
+  const scrollView = (id) => {
+    const target = document.getElementById(id);
+    if(target) {
+      target.scrollIntoView();
+    }
+  }
+
   return (
     <div className="header">
       {menu()}
-      <Link className={renderMenu} to="/band">
+      <Link className={renderMenu} to="/" onClick={()=> scrollView("middle-content")}>
         BAND
       </Link>
-      <Link className={renderMenu} to="/tour">
+      <Link className={renderMenu} to="/"  onClick={()=> scrollView("tour-list-container")}>
         TOUR
       </Link>
-      <Link className={renderMenu} to="/contact">
+      <Link className={renderMenu} to="/"  onClick={()=> scrollView("contact")}>
         CONTACT
       </Link>
       {dropdownMore()}

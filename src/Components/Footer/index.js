@@ -30,10 +30,10 @@ const Footer = () => {
       </form>
     </div>
   );
-  
+
   return (
     <div>
-      <div className="contact">
+      <div className="contact" id="contact">
         <p>CONTACT</p>
         <p>Fan? Drop a note!</p>
         <div className="contact-info">

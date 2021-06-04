@@ -67,7 +67,7 @@ const Home = () => {
         <p>{selectedImg.title}</p>
         <p>{selectedImg.description}</p>
       </div>
-      <div className="middle-content">
+      <div className="middle-content" id="middle-content">
         <p>THE BAND</p>
         <p>We love music</p>
         <p>
@@ -92,7 +92,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className="tour-list-container">
+      <div className="tour-list-container" id="tour-list-container">
         <div className="tour-list">
           <p>TOUR DATES</p>
           <p>Remember to book your tickets!</p>
