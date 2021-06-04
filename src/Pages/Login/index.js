@@ -1,8 +1,6 @@
-import { isEmpty } from "lodash";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
-import ButtonPixel from "../../Components/ButtonPixel";
 import { removeAuth } from "../../Utils/localStorage";
 
 const Login = (props) => {
@@ -23,36 +21,71 @@ const Login = (props) => {
     login(data);
   };
 
+  const showForm = (add = true) => {
+    const formBx = document.querySelector(".formBx");
+    const body = document.querySelector(".body-login");
+    if (add) {
+      formBx.classList.add("active");
+      body.classList.add("active");
+    } else {
+      formBx.classList.remove("active");
+      body.classList.remove("active");
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-login">
-        {!isEmpty(error) && <span className="text-danger">{error}</span>}
-        <div>
-          <label className="label-login-form">Username</label>
-          <input
-            className="input-login-form"
-            defaultValue="admin"
-            {...register("username", { required: true })}
-          />
+    <div className="body-login">
+      <div className="container">
+        <div className="blueBg">
+          <div className="box signin">
+            <h2>Already have an account?</h2>
+            <button className="signinBtn" onClick={() => showForm(false)}>
+              Sign in
+            </button>
+          </div>
+          <div className="box signup">
+            <h2>Don't have an account?</h2>
+            <button className="signupBtn" onClick={showForm}>
+              Sign up
+            </button>
+          </div>
         </div>
-        {errors.username && (
-          <span className="text-danger">This field is required</span>
-        )}
-        <div>
-          <label className="label-login-form">Password</label>
-          <input
-            className="input-login-form"
-            defaultValue="admin"
-            {...register("password", { required: true })}
-          />
+        <div className="formBx">
+          <div className="form signinForm">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h3>Sign In</h3>
+              <input
+                type="text"
+                defaultValue="admin"
+                {...register("username", { required: true })}
+                placeholder="Username"
+              />
+              <input
+                type="password"
+                defaultValue="admin"
+                {...register("password", { required: true })}
+                placeholder="Password"
+              />
+              <input type="submit" value="Login" />
+              <a href="#" className="forgot">
+                Forgot Password
+              </a>
+            </form>
+          </div>
+
+          <div className="form signupForm">
+            <form>
+              <h3>Sign up</h3>
+              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Confirm password" />
+              <input type="submit" value="Register" />
+            </form>
+          </div>
         </div>
-        {errors.password && (
-          <span className="text-danger">This field is required</span>
-        )}
-        <ButtonPixel title="Login" type="sumit" />
-        {/* <button type="submit">Login</button> */}
       </div>
-    </form>
+    </div>
   );
 };
 

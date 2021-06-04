@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { removeAuth } from "../../Utils/localStorage";
 import Input1 from "../Input1";
 
 const Header = () => {
@@ -50,22 +51,38 @@ const Header = () => {
 
   const scrollView = (id) => {
     const target = document.getElementById(id);
-    if(target) {
+    if (target) {
       target.scrollIntoView();
     }
-  }
+  };
+
+  const logOut = () => {
+    removeAuth();
+    window.location.reload();
+  };
 
   return (
     <div className="header">
       {menu()}
-      <Link className={renderMenu} to="/" onClick={()=> scrollView("middle-content")}>
+      <Link
+        className={renderMenu}
+        to="/"
+        onClick={() => scrollView("middle-content")}
+      >
         BAND
       </Link>
-      <Link className={renderMenu} to="/"  onClick={()=> scrollView("tour-list-container")}>
+      <Link
+        className={renderMenu}
+        to="/"
+        onClick={() => scrollView("tour-list-container")}
+      >
         TOUR
       </Link>
-      <Link className={renderMenu} to="/"  onClick={()=> scrollView("contact")}>
+      <Link className={renderMenu} to="/" onClick={() => scrollView("contact")}>
         CONTACT
+      </Link>
+      <Link className={renderMenu} to="/" onClick={logOut}>
+        LOG OUT
       </Link>
       {dropdownMore()}
       {searchContainer()}
