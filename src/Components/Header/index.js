@@ -41,7 +41,6 @@ const Header = () => {
 
   const searchContainer = () => (
     <div className={`search-container ${renderMenu}`}>
-      {/* <input type="text" placeholder="Search.." name="search" /> */}
       <Input1 placeholder="Search..." additionClassName="header-search-input" />
       <button type="submit">
         <i className="fa fa-search" />

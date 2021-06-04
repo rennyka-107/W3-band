@@ -1,4 +1,5 @@
 import React from "react";
+import Button1 from "../Button1";
 import Input1 from "../Input1";
 
 const Footer = () => {
@@ -25,10 +26,11 @@ const Footer = () => {
           <Input1 placeholder="Email" additionClassName="div-footer-input" />
         </div>
         <Input1 placeholder="Message" additionClassName="div-footer-input" />
-        <button className="button-1 btn-1-black btn-1-float-right">Send</button>
+        <Button1 title="Send" additionClass="btn-1-float-right" />
       </form>
     </div>
   );
+  
   return (
     <div>
       <div className="contact">
