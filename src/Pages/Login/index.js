@@ -1,15 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { removeAuth } from "../../Utils/localStorage";
 
 const Login = (props) => {
   const { login, authReducer } = props;
-  const { isLoged, error } = authReducer;
+  const { isLoged } = authReducer;
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   if (isLoged) {
@@ -67,9 +67,9 @@ const Login = (props) => {
                 placeholder="Password"
               />
               <input type="submit" value="Login" />
-              <a href="#" className="forgot">
+              <Link to="/login" className="forgot">
                 Forgot Password
-              </a>
+              </Link>
             </form>
           </div>
 

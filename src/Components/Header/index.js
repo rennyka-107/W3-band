@@ -84,6 +84,9 @@ const Header = () => {
       <Link className={renderMenu} to="/" onClick={logOut}>
         LOG OUT
       </Link>
+      <Link className={renderMenu} to="/card-information">
+        CARD INFORMATION
+      </Link>
       {dropdownMore()}
       {searchContainer()}
     </div>
